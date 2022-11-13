@@ -1,0 +1,4 @@
+spring:
+  mongodb:
+    embedded:
+      version: 3.4.11 # 테스트코드 실행을 위해 flapdoodle embeded mongoDB랑 버전을 맞춰줬음

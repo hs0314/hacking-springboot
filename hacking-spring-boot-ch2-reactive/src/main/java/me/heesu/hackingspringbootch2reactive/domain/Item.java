@@ -2,6 +2,8 @@ package me.heesu.hackingspringbootch2reactive.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.geo.Point;
 
@@ -26,5 +28,31 @@ public class Item {
         this.name = name;
         this.description = description;
         this.price = price;
+    }
+
+    public Item(String id, String name, String description, double price){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        Item target = (Item)obj;
+
+        if(target == null) {
+            return false;
+        }
+
+        if(StringUtils.defaultString(this.getId(),"").equals(target.getId())
+            && StringUtils.defaultString(this.getName(),"").equals(target.getName())
+            && StringUtils.defaultString(this.getDescription(),"").equals(target.getDescription())
+            && this.getPrice() == target.getPrice()){
+
+            return true;
+        }else {
+            return false;
+        }
     }
 }
