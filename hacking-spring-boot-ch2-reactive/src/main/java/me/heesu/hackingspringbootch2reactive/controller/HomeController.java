@@ -18,15 +18,9 @@ public class HomeController {
 
     private InventoryService inventoryService;
     private SearchService searchService;
-    private ItemRepository itemRepository;
-    private CartRepository cartRepository;
 
     public HomeController(InventoryService inventoryService,
-                          SearchService searchService,
-                          ItemRepository itemRepository,
-                          CartRepository cartRepository){
-        this.itemRepository = itemRepository;
-        this.cartRepository = cartRepository;
+                          SearchService searchService){
         this.inventoryService = inventoryService;
         this.searchService = searchService;
     }
@@ -34,8 +28,8 @@ public class HomeController {
     @GetMapping
     Mono<Rendering> home(){
         return Mono.just(Rendering.view("home.html")
-                .modelAttribute("items", this.itemRepository.findAll().doOnNext(System.out::println))
-                .modelAttribute("cart", this.cartRepository.findById("My Cart").defaultIfEmpty(new Cart("My Cart")))
+                .modelAttribute("items", inventoryService.getInventory())
+                .modelAttribute("cart", inventoryService.getCart("My Cart"))
                 .build());
     }
 
@@ -52,7 +46,7 @@ public class HomeController {
                            @RequestParam boolean useAnd){
         return Mono.just(Rendering.view("home.html")
                 .modelAttribute("items", searchService.searchByExample(name, description, useAnd))
-                .modelAttribute("cart", this.cartRepository.findById("My Cart").defaultIfEmpty(new Cart("My Cart")))
+                .modelAttribute("cart", inventoryService.getCart("My Cart"))
                 .build());
 
     }

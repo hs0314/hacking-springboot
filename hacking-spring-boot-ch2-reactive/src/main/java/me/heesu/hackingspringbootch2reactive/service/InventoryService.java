@@ -2,9 +2,11 @@ package me.heesu.hackingspringbootch2reactive.service;
 
 import me.heesu.hackingspringbootch2reactive.domain.Cart;
 import me.heesu.hackingspringbootch2reactive.domain.CartItem;
+import me.heesu.hackingspringbootch2reactive.domain.Item;
 import me.heesu.hackingspringbootch2reactive.repository.CartRepository;
 import me.heesu.hackingspringbootch2reactive.repository.ItemRepository;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -17,6 +19,14 @@ public class InventoryService {
                      CartRepository cartRepository){
         this.itemRepository = itemRepository;
         this.cartRepository = cartRepository;
+    }
+
+    public Mono<Cart> getCart(String cartId){
+        return this.cartRepository.findById(cartId).defaultIfEmpty(new Cart("My Cart"));
+    }
+
+    public Flux<Item> getInventory(){
+        return this.itemRepository.findAll().doOnNext(System.out::println);
     }
 
     public Mono<Cart> addToCart(String cartId, String id){
