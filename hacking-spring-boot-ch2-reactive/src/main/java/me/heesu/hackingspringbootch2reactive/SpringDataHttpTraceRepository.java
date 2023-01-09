@@ -2,6 +2,7 @@ package me.heesu.hackingspringbootch2reactive;
 
 import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
+import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 import java.util.stream.Collectors;
