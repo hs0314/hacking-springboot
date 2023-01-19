@@ -1,7 +1,9 @@
 package me.heesu.hackingspringbootch2reactive.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.annotation.Id;
@@ -39,6 +41,13 @@ public class Item {
 
     @Override
     public boolean equals(Object obj){
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
         Item target = (Item)obj;
 
         if(target == null) {

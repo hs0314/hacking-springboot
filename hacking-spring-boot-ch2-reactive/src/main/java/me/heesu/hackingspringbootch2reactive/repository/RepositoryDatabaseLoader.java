@@ -11,11 +11,14 @@ public class RepositoryDatabaseLoader {
     @Bean
     CommandLineRunner initialize(BlockingItemRepository repository){
         return args -> {
+            /*
             repository.deleteAll();
 
             repository.save(new Item("Alf alarm clock", "",19.99));
             repository.save(new Item("Smurt Tv", "",14.99));
             repository.save(new Item("test", "",12.00));
+
+             */
         };
     }
 }

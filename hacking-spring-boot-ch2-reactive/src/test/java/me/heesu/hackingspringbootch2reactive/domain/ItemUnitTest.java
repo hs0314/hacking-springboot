@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +18,16 @@ class ItemUnitTest {
 
     @AfterEach
     void tearDown() {
+    }
+
+    @Test
+    void equalsWithOptionalTest(){
+        Item item = new Item("item1", "desc", 5.00);
+        try{
+            item.equals(Optional.empty());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Test
