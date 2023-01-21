@@ -108,6 +108,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- rsockect-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-rsocket</artifactId>
+		</dependency>
+
 		<!--test container를 JUnit5와 함께 사용하기 위해서 추가-->
 		<dependency>
 			<groupId>org.testcontainers</groupId>

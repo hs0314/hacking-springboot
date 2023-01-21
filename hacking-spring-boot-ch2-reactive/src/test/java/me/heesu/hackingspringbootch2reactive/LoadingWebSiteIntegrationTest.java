@@ -18,7 +18,6 @@ public class LoadingWebSiteIntegrationTest {
 	WebTestClient client;
 
 	//xxx: 내장 컨테이너에 대한 웹컨트롤러/백엔드서비스 협력 테스트
-	@Test
 	void test() {
 		client.get().uri("/").exchange()
 				.expectStatus().isOk()

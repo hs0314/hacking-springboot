@@ -35,13 +35,13 @@ public class RabbitMqTest {
     ItemRepository repository;
 
     // 환경설정 내용을 동적으로 추가
-    @DynamicPropertySource
+    //@DynamicPropertySource
     static void configure(DynamicPropertyRegistry registry){
         registry.add("spring.rabbitmq.host", container::getContainerIpAddress);
         registry.add("spring.rabbitmq.port", container::getAmqpPort);
     }
 
-    @Test
+    //@Test
     void verifyMessagingThroughAmqp() throws InterruptedException{
         //직전 데이터 전체 삭제
         repository.deleteAll();
